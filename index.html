@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <title>SexyList</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header" role="banner">
+      SexyList
+    </header>
+    <div class="app">
+      <div ng-controller="ItemController">
+        <p ng-if="items.length > 0"><button class="btn btn--error btn--block" ng-click="deleteAll()">Clear all</button></p>
+        <div class="items-meta" ng-if="items.length > 0">
+          {{ itemsRemaining() }} of <ng-pluralize count="items.length" when="{'one': '1 item remaining', 'other': '{} items remaining'}"></ng-pluralize>
+        </div>
+        <ul class="items">
+          <li ng-repeat="item in items">
+            <label>
+              <input class="item__toggle" type="checkbox" ng-model="item.done">
+              <span class="item__title item__title-done-{{ item.done }}">{{ item.title }}</span>
+            </label>
+            <button class="item__delete" ng-click="delete(item)">&times;</button>
+          </li>
+        </ul>
+        <form class="form--add-item" ng-submit="createItem()">
+          <input type="text" ng-model="itemTitle" placeholder="New item">
+          <button class="btn" type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

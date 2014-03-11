@@ -1,0 +1,137 @@
+@import '//fonts.googleapis.com/css?family=Open+Sans:400,700';
+
+*,
+*:before,
+*:after {
+  border: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #eee;
+  color: #444;
+  font: 100%/1.5 'Open Sans', Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 1rem;
+}
+
+input {
+  background-color: #eee;
+  font: inherit;
+  padding: 1rem;
+}
+
+.btn {
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--error {
+  background-color: #e74c3c;
+}
+
+.btn--link {
+  background-color: transparent;
+  color: #444;
+  padding: 0 1rem;
+}
+
+.pull-right {
+  float: right;
+}
+
+.container {
+  margin: 2rem auto;
+  max-width: 460px;
+}
+
+.header {
+  color: #3498db;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 1px 1px #fff;
+  margin-bottom: 2rem;
+}
+
+  .header i {
+    font-size: 2rem;
+    margin: 0 5px;
+  }
+
+.app {
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.items-meta {
+  color: #999;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+  .items > li {
+    border-bottom: solid 1px #eee;
+    padding: 1rem 0;
+  }
+
+  .items > li:last-child {
+    border-bottom: 0;
+  }
+
+    .item__toggle {
+      float: left;
+      margin: 5px 10px 0 0;
+    }
+
+    .item__title {
+      
+    }
+
+    .item__title-done-true {
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .item__delete {
+      background-color: transparent;
+      cursor: pointer;
+      float: right;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+.form--add-item {
+  overflow: hidden;
+}
+
+  .form--add-item input {
+    float: left;
+    width: 75%;
+  }
+
+  .form--add-item button {
+    float: right;
+    width: 25%
+  }
