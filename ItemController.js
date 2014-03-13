@@ -1,19 +1,8 @@
 function ItemController($scope) {
 
-  $scope.items = [
-    {
-      title: 'Clothes',
-      done: true
-    },
-    {
-      title: 'Boots',
-      done: false
-    },
-    {
-      title: 'Motorcycle',
-      done: false
-    }
-  ];
+  $scope.items = JSON.parse(window.localStorage.getItem('items'));
+
+  console.log($scope.items);
 
   $scope.createItem = function() {
     if (typeof $scope.itemTitle === 'undefined' || $scope.itemTitle == '')
@@ -22,6 +11,7 @@ function ItemController($scope) {
       title: $scope.itemTitle
     });
     $scope.itemTitle = '';
+    window.localStorage.setItem('items', JSON.stringify($scope.items));
   };
 
   $scope.itemsRemaining = function() {
@@ -35,10 +25,12 @@ function ItemController($scope) {
   $scope.delete = function(item) {
     var index = $scope.items.indexOf(item)
     $scope.items.splice(index, 1);
+    window.localStorage.setItem('items', JSON.stringify($scope.items));
   }
 
   $scope.deleteAll = function() {
     $scope.items = [];
+    window.localStorage.setItem('items', JSON.stringify($scope.items));
   }
 
 }
