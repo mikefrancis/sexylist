@@ -1,6 +1,6 @@
 function ItemController($scope) {
 
-  $scope.items = JSON.parse(window.localStorage.getItem('items'));
+  $scope.items = window.localStorage.getItem('items') ? JSON.parse(window.localStorage.getItem('items')) : [];
 
   console.log($scope.items);
 
