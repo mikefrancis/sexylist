@@ -20,15 +20,15 @@
         </div>
         <ul class="items">
           <li ng-repeat="item in items">
+            <button class="item__delete" ng-click="delete(item)">&times;</button>
             <label>
               <input class="item__toggle" type="checkbox" ng-model="item.done">
               <span class="item__title item__title-done-{{ item.done }}">{{ item.title }}</span>
             </label>
-            <button class="item__delete" ng-click="delete(item)">&times;</button>
           </li>
         </ul>
         <form class="form--add-item" ng-submit="createItem()">
-          <input type="text" ng-model="itemTitle" placeholder="New item">
+          <input autofocus type="text" ng-model="itemTitle" placeholder="New item">
           <button class="btn" type="submit">Add</button>
         </form>
       </div>

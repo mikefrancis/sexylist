@@ -98,7 +98,8 @@ input[type="text"] {
 
   .items > li {
     border-bottom: solid 1px #eee;
-    padding: 1rem 0;
+    padding: 1rem 30px;
+    word-wrap: break-word;
   }
 
   .items > li:last-child {
@@ -107,11 +108,7 @@ input[type="text"] {
 
     .item__toggle {
       float: left;
-      margin: 5px 10px 0 0;
-    }
-
-    .item__title {
-      
+      margin: 5px 0 0 -30px;
     }
 
     .item__title-done-true {
@@ -125,6 +122,7 @@ input[type="text"] {
       float: right;
       font-size: 1rem;
       font-weight: 700;
+      margin-right: -30px;
     }
 
 .form--add-item {
