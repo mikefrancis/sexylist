@@ -4,14 +4,14 @@ app.controller('ItemController', function($scope) {
 
   $scope.items = [];
 
-  $scope.createItem = function() {
-    if (typeof $scope.itemTitle === 'undefined' || $scope.itemTitle == '')
-      return false;
-    $scope.items.push({
-      title: $scope.itemTitle
-    });
-    $scope.itemTitle = '';
-    window.localStorage.setItem('items', JSON.stringify($scope.items));
+  $scope.create = function(isValid) {
+    if (isValid) {
+      $scope.items.push({
+        title: $scope.item.title,
+        done: false
+      });
+      $scope.itemTitle = '';
+    }
   };
 
   $scope.itemsRemaining = function() {
@@ -25,12 +25,10 @@ app.controller('ItemController', function($scope) {
   $scope.delete = function(item) {
     var index = $scope.items.indexOf(item)
     $scope.items.splice(index, 1);
-    window.localStorage.setItem('items', JSON.stringify($scope.items));
   }
 
-  $scope.deleteAll = function() {
+  $scope.truncate = function() {
     $scope.items = [];
-    window.localStorage.setItem('items', JSON.stringify($scope.items));
   }
 
 });

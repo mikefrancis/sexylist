@@ -14,7 +14,7 @@
     </header>
     <div class="app">
       <div ng-controller="ItemController">
-        <p ng-if="items.length > 0"><button class="btn btn--error btn--block" ng-click="deleteAll()">Clear all</button></p>
+        <p ng-if="items.length > 0"><button class="btn btn--error btn--block" ng-click="truncate()">Clear all</button></p>
         <div class="items-meta" ng-if="items.length > 0">
           {{ itemsRemaining() }} of <ng-pluralize count="items.length" when="{'one': '1 item remaining', 'other': '{} items remaining'}"></ng-pluralize>
         </div>
@@ -27,9 +27,9 @@
             </label>
           </li>
         </ul>
-        <form class="form--add-item" ng-submit="createItem()">
-          <input autofocus type="text" ng-model="itemTitle" placeholder="New item">
-          <button class="btn" type="submit">Add</button>
+        <form novalidate class="form--add-item" name="formItem" ng-submit="create(formItem.$valid)">
+          <input autofocus required type="text" ng-model="item.title" placeholder="New item">
+          <button class="btn" type="submit" ng-disabled="formItem.$invalid">Add</button>
         </form>
       </div>
     </div>
