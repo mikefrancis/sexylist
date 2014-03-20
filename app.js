@@ -1,8 +1,8 @@
-function ItemController($scope) {
+var app = angular.module('app', []);
 
-  $scope.items = window.localStorage.getItem('items') ? JSON.parse(window.localStorage.getItem('items')) : [];
+app.controller('ItemController', function($scope) {
 
-  console.log($scope.items);
+  $scope.items = [];
 
   $scope.createItem = function() {
     if (typeof $scope.itemTitle === 'undefined' || $scope.itemTitle == '')
@@ -33,4 +33,4 @@ function ItemController($scope) {
     window.localStorage.setItem('items', JSON.stringify($scope.items));
   }
 
-}
+});
