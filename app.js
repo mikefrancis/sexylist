@@ -10,7 +10,7 @@ app.controller('ItemController', function($scope) {
         title: $scope.item.title,
         done: false
       });
-      $scope.itemTitle = '';
+      $scope.item.title = '';
     }
   };
 
