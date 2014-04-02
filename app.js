@@ -2,7 +2,7 @@ var app = angular.module('app', []);
 
 app.controller('ItemController', function($scope) {
 
-  $scope.items = [];
+  $scope.items = JSON.parse(localStorage.getItem('items')) || [];
 
   $scope.create = function(isValid) {
     if (isValid) {
@@ -30,5 +30,11 @@ app.controller('ItemController', function($scope) {
   $scope.truncate = function() {
     $scope.items = [];
   }
+
+  $scope.$watch('items', function(newItem, oldItem) {
+    if (newItem != oldItem) {
+      localStorage.setItem('items', JSON.stringify(newItem));
+    }
+  }, true);
 
 });

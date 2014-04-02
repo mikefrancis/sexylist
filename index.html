@@ -19,7 +19,7 @@
           {{ itemsRemaining() }} of <ng-pluralize count="items.length" when="{'one': '1 item remaining', 'other': '{} items remaining'}"></ng-pluralize>
         </div>
         <ul class="items">
-          <li ng-repeat="item in items">
+          <li ng-repeat="item in items track by $index">
             <button class="item__delete" ng-click="delete(item)">&times;</button>
             <label>
               <input class="item__toggle" type="checkbox" ng-model="item.done">
