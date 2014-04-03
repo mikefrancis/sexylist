@@ -26,7 +26,6 @@ app.controller('ItemController', function($scope, itemsFactory) {
         title: $scope.item.title,
         complete: false
       });
-      itemsFactory.set($scope.items);
       $scope.item.title = '';
     }
   };
@@ -42,12 +41,16 @@ app.controller('ItemController', function($scope, itemsFactory) {
   $scope.delete = function(item) {
     var index = $scope.items.indexOf(item);
     $scope.items.splice(index, 1);
-    itemsFactory.set($scope.items);
   }
 
   $scope.truncate = function() {
     $scope.items = [];
-    itemsFactory.set($scope.items);
   }
+
+  $scope.$watch('items', function(newItems, oldItems) {
+    if (newItems != oldItems) {
+      itemsFactory.set(newItems);
+    }
+  }, true);
 
 });
