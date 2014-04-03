@@ -1,14 +1,10 @@
 var app = angular.module('app', []);
 
-// Not using factory at the moment
-
 app.factory('itemsFactory', function() {
 
   return {
 
-    set: function(item) {
-      var items = this.get();
-      items.push(item);
+    set: function(items) {
       localStorage.setItem('items', JSON.stringify(items));
     },
 
@@ -20,9 +16,9 @@ app.factory('itemsFactory', function() {
   
 });
 
-app.controller('ItemController', function($scope) {
+app.controller('ItemController', function($scope, itemsFactory) {
 
-  $scope.items = JSON.parse(localStorage.getItem('items')) || [];
+  $scope.items = itemsFactory.get();
 
   $scope.create = function(isValid) {
     if (isValid) {
@@ -30,6 +26,7 @@ app.controller('ItemController', function($scope) {
         title: $scope.item.title,
         complete: false
       });
+      itemsFactory.set($scope.items);
       $scope.item.title = '';
     }
   };
@@ -45,16 +42,12 @@ app.controller('ItemController', function($scope) {
   $scope.delete = function(item) {
     var index = $scope.items.indexOf(item);
     $scope.items.splice(index, 1);
+    itemsFactory.set($scope.items);
   }
 
   $scope.truncate = function() {
     $scope.items = [];
+    itemsFactory.set($scope.items);
   }
-
-  $scope.$watch('items', function(newItem, oldItem) {
-    if (newItem != oldItem) {
-      localStorage.setItem('items', JSON.stringify(newItem));
-    }
-  }, true);
 
 });
