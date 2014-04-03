@@ -1,5 +1,25 @@
 var app = angular.module('app', []);
 
+// Not using factory at the moment
+
+app.factory('itemsFactory', function() {
+
+  return {
+
+    set: function(item) {
+      var items = this.get();
+      items.push(item);
+      localStorage.setItem('items', JSON.stringify(items));
+    },
+
+    get: function() {
+      return JSON.parse(localStorage.getItem('items')) || [];
+    }
+
+  }
+  
+});
+
 app.controller('ItemController', function($scope) {
 
   $scope.items = JSON.parse(localStorage.getItem('items')) || [];
@@ -8,7 +28,7 @@ app.controller('ItemController', function($scope) {
     if (isValid) {
       $scope.items.push({
         title: $scope.item.title,
-        done: false
+        complete: false
       });
       $scope.item.title = '';
     }
@@ -17,13 +37,13 @@ app.controller('ItemController', function($scope) {
   $scope.itemsRemaining = function() {
     var count = 0;
     angular.forEach($scope.items, function(item) {
-      count += item.done ? 0 : 1;
+      count += item.complete ? 0 : 1;
     });
     return count;
   }
 
   $scope.delete = function(item) {
-    var index = $scope.items.indexOf(item)
+    var index = $scope.items.indexOf(item);
     $scope.items.splice(index, 1);
   }
 

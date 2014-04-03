@@ -113,7 +113,7 @@ input[type="text"] {
       margin: 5px 0 0 -30px;
     }
 
-    .item__title-done-true {
+    .item__title-complete-true {
       color: #999;
       text-decoration: line-through;
     }

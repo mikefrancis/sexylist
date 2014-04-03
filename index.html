@@ -21,8 +21,8 @@
           <li ng-repeat="item in items track by $index">
             <button class="item__delete" ng-click="delete(item)">&times;</button>
             <label>
-              <input class="item__toggle" type="checkbox" ng-model="item.done">
-              <span class="item__title item__title-done-{{ item.done }}">{{ item.title }}</span>
+              <input class="item__toggle" type="checkbox" ng-model="item.complete">
+              <span class="item__title item__title-complete-{{ item.complete }}">{{ item.title }}</span>
             </label>
           </li>
         </ul>
@@ -37,6 +37,6 @@
       </footer>
   </div>
   <script src="bower_components/angular/angular.min.js"></script>
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
