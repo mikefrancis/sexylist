@@ -21,6 +21,11 @@ h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 1rem;
 }
 
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
 input[type="text"] {
   -webkit-appearance: none;
   background-color: #eee;
@@ -135,3 +140,8 @@ input[type="text"] {
     float: right;
     width: 25%
   }
+  
+.footer {
+  padding: 1rem 0;
+  text-align: center;
+}
