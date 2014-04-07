@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui']);
+var app = angular.module('app', []);
 
 app.factory('itemsFactory', function() {
 
