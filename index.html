@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <title>SexyList</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700">
   <link rel="stylesheet" href="css/style.css" />
   <!--[if lt IE 9]>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
   <![endif]-->
 </head>
 <body>
@@ -20,7 +21,7 @@
         <div class="items-meta" ng-if="items.length > 0">
           {{ itemsRemaining() }} of <ng-pluralize count="items.length" when="{'one': '1 item remaining', 'other': '{} items remaining'}"></ng-pluralize>
         </div>
-        <ul class="items">
+        <ul ng-if="items.length > 0" class="items">
           <li ng-repeat="item in items track by $index">
             <button class="item__delete" ng-click="delete(item)">&times;</button>
             <label>
