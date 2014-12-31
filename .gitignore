@@ -1,4 +1,5 @@
 *.DS_Store
 *[Tt]humbs.db
 *.Trashes
-bower_components
+node_modules
+npm-debug.log
