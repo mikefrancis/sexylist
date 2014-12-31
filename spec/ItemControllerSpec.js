@@ -2,34 +2,41 @@ describe('ItemController', function() {
 
   beforeEach(module('app'));
 
-  var $controller;
+  var $controller,
+      $rootScope;
 
-  beforeEach(inject(function(_$controller_) {
+  beforeEach(inject(function(_$controller_, _$rootScope_) {
     $controller = _$controller_;
+    $rootScope = _$rootScope_;
   }));
 
   it ('adds a new, uncompleted task', function() {
-    $scope = {};
-    var controller = $controller('ItemController', { $scope: $scope });
-    $scope.item = {
+    var scope = $rootScope.$new(),
+        controller = $controller('ItemController', { $scope: scope });
+    scope.item = {
       title: 'Testing code'
     };
-    $scope.create(true);
-    expect($scope.items[0].title).toEqual('Testing code');
-    expect($scope.items[0].complete).toEqual(false);
+    scope.create(true);
+    scope.$digest();
+    expect(scope.items[0].title).toEqual('Testing code');
+    expect(scope.items[0].complete).toEqual(false);
   });
 
   it ('deletes a task', function() {
-    $scope.items = [{
+    var scope = $rootScope.$new(),
+        controller = $controller('ItemController', { $scope: scope });
+    scope.items = [{
       title: 'Testing code',
       complete: false
     }];
-    $scope.delete(0);
-    expect($scope.items).toEqual([]);
+    scope.delete(0);
+    expect(scope.items).toEqual([]);
   });
 
   it ('deletes all tasks', function() {
-    $scope.items = [
+    var scope = $rootScope.$new(),
+        controller = $controller('ItemController', { $scope: scope });
+    scope.items = [
       {
         title: 'Testing code',
         complete: false
@@ -43,8 +50,8 @@ describe('ItemController', function() {
         complete: false
       },
     ];
-    $scope.truncate();
-    expect($scope.items).toEqual([]);
+    scope.truncate();
+    expect(scope.items).toEqual([]);
   });
 
 });

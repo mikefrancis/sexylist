@@ -51,10 +51,10 @@ app.controller('ItemController', function($scope, ItemFactory) {
   }
 
 
-  // $scope.$watch('items', function(newItems, oldItems) {
-  //   if (newItems != oldItems) {
-  //     ItemFactory.set(newItems);
-  //   }
-  // }, true);
+  $scope.$watch('items', function(newItems, oldItems) {
+    if (newItems != oldItems) {
+      ItemFactory.set(newItems);
+    }
+  }, true);
 
 });
